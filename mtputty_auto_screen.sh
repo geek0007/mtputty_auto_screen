@@ -1,5 +1,10 @@
 #!/bin/bash
 
+#############################
+###Script Written and Maintained by: Jalindar Gat
+############################
+
+
 day_now=
 hr_now=
 min_now=
@@ -70,7 +75,7 @@ if [ "${first_run}" == "0" ]; then
       exit;
 
     fi #endof count check
- fi#endof day hr min
+ fi #endof day hr min
 
 fi #first_run check
 
