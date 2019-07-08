@@ -37,18 +37,18 @@ date=${2}
 if [ "${1}" == "now" ]; then
 
 day_now=`echo ${date} | cut -d ' ' -f '4'`
-time_now=`echo {date} | cut -d ' ' -f '5'`
-hr_now=`echo ${time} | cut -d ':' -f '1'`
-min_now=`echo ${time} | cut -d ':' -f '2'`
-sec_now=`echo ${time} | cut -d ':' -f '3'`
+time_now=`echo ${date} | cut -d ' ' -f '5'`
+hr_now=`echo ${time_now} | cut -d ':' -f '1'`
+min_now=`echo ${time_now} | cut -d ':' -f '2'`
+sec_now=`echo ${time_now} | cut -d ':' -f '3'`
 
 else
 
-day_old=`date | cut -d ' ' -f '4'`
-time_old=`date | cut -d ' ' -f '5'`
-hr_old=`echo ${time} | cut -d ':' -f '1'`
-min_old=`echo ${time} | cut -d ':' -f '2'`
-sec_old=`echo ${time} | cut -d ':' -f '3'`
+day_old=`echo ${date} | cut -d ' ' -f '4'`
+time_old=`echo ${date} | cut -d ' ' -f '5'`
+hr_old=`echo ${time_old} | cut -d ':' -f '1'`
+min_old=`echo ${time_old} | cut -d ':' -f '2'`
+sec_old=`echo ${time_old} | cut -d ':' -f '3'`
 
 fi
 
@@ -61,17 +61,16 @@ if [ "${first_run}" == "0" ]; then
  getinfo "now" ${date_now}
  getinfo "last_time" ${screen_last_time} 
 
- if [ ${day_now} == ${day_old} ]; then
-   if [ ${hr_now} == ${hr_now}  ]; then
-      if [ ${min_now} == ${min_now} ]; then      
-           if [ ${screen_count} -ge ${count} ]; then
- 
-            exit;
+ if [ ${day_now} == ${day_old} ] && [ ${hr_now} == ${hr_old}  ] && [ ${min_now} == ${min_old} ]; then      
+    if [ ${screen_count} -ge ${count} ]; then
 
-          fi #endof count check
-     fi #endof min
-   fi #endof hr
- fi #endof day
+      echo "All screen session opened"
+      rm ${user_path}/screen_last_time
+      rm ${user_path}/screen_count
+      exit;
+
+    fi #endof count check
+ fi#endof day hr min
 
 fi #first_run check
 
