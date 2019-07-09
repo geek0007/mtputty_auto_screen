@@ -31,7 +31,7 @@ if [ -f ${user_path}/screen_count ]; then
 fi
 
 count=`screen -rd | wc -l`
-count=`expr $count - 2`
+count=`expr $count - 1`
 
 #getinfo now|old date
 getinfo(){
