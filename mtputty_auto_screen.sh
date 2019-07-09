@@ -67,7 +67,7 @@ if [ "${first_run}" == "0" ]; then
  getinfo "last_time" ${screen_last_time} 
 
  if [ ${day_now} == ${day_old} ] && [ ${hr_now} == ${hr_old}  ] && [ ${min_now} == ${min_old} ]; then      
-    if [ ${screen_count} -ge ${count} ]; then
+    if [ ${screen_count} -gt ${count} ]; then
 
       echo "All screen session opened"
       rm ${user_path}/screen_last_time
